@@ -65,7 +65,6 @@ myForm.addEventListener("submit", submitHandler);
 
 function submitHandler(event) {
 event.preventDefault();
-console.log(event)
 let fullname=event.target.Name.value;
 let department=event.target.Department.value;
 let level=event.target.Level.value;
