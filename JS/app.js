@@ -24,26 +24,32 @@ Employee.prototype.randomSalary=function(){
     this.Salary=Math.floor(Math.random() * (2000 - 1500+ 1) + 1500)
 }
 
-// prototype function to render the employeename and salary to the main page
+// prototype function to render the employee card to the main page
 Employee.prototype.renderEmoloyee=function() {
     let empData = document.getElementById("employeeData");
-    let img = document.createElement("img")
-    img.src="./assets/employee.jpg"
-    img.width=70
-    let empName = document.createElement('p')
-    empName.textContent=this.FullName
-    let department_level= document.createElement('p')
-   department_level.textContent="Department: "+this.Department+" - Level: "+this.Level
-   let empId= document.createElement('p')
-   empId.textContent=this.EmployeeID
-empData.appendChild(img)
-empData.appendChild(empName)
-empData.appendChild(department_level)
-empData.appendChild(empId)
-}
+  let employeeCard = document.createElement("div");
+  employeeCard.className = "employee-card"; // Add CSS class for styling each card
+  let img = document.createElement("img");
+  img.src = this.ImageURL;
+  img.width = 70;
+  let empName = document.createElement("p");
+  empName.textContent = this.FullName;
+  let department_level = document.createElement("p");
+  department_level.textContent =
+    "Department: " + this.Department + " - Level: " + this.Level;
+  let empId = document.createElement("p");
+  empId.textContent = this.EmployeeID;
+
+  employeeCard.appendChild(img);
+  employeeCard.appendChild(empName);
+  employeeCard.appendChild(department_level);
+  employeeCard.appendChild(empId);
+  empData.appendChild(employeeCard);
+};
+
 
 // generate unique four digits
-var num =0;
+let num =0;
 function idGenerator(num) {
     let str=num.toString()
     let string ="0000"
@@ -63,8 +69,9 @@ console.log(event)
 let fullname=event.target.Name.value;
 let department=event.target.Department.value;
 let level=event.target.Level.value;
+let imageurl = event.target.image.value;      // use thisas url to determine image location: ./assets/employee.jpg
 num++;
-let registeredEmployee = new Employee(idGenerator(num),fullname,department,level)
+let registeredEmployee = new Employee(idGenerator(num),fullname,department,level,imageurl)
 registeredEmployee.randomSalary()
 registeredEmployee.netSalary()
 registeredEmployee.renderEmoloyee()
