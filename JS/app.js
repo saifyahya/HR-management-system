@@ -31,19 +31,20 @@ Employee.prototype.renderEmoloyee=function() {
   employeeCard.className = "employee-card"; // Add CSS class for styling each card
   let img = document.createElement("img");
   img.src = this.ImageURL;
-  img.width = 70;
   let empName = document.createElement("p");
   empName.textContent = this.FullName;
   let department_level = document.createElement("p");
   department_level.textContent =
     "Department: " + this.Department + " - Level: " + this.Level;
   let empId = document.createElement("p");
-  empId.textContent = this.EmployeeID;
-
+  empId.textContent = "ID - "+this.EmployeeID;
+  let empSalary=document.createElement("p");
+  empSalary.textContent="Salary: "+this.Salary;
   employeeCard.appendChild(img);
   employeeCard.appendChild(empName);
   employeeCard.appendChild(department_level);
   employeeCard.appendChild(empId);
+  employeeCard.appendChild(empSalary);
   empData.appendChild(employeeCard);
 };
 
@@ -68,7 +69,7 @@ event.preventDefault();
 let fullname=event.target.Name.value;
 let department=event.target.Department.value;
 let level=event.target.Level.value;
-let imageurl = event.target.image.value;      // use thisas url to determine image location: ./assets/employee.jpg
+let imageurl = event.target.image.value;      // use this as url to determine image location: ./assets/employee.jpg
 num++;
 let registeredEmployee = new Employee(idGenerator(num),fullname,department,level,imageurl)
 registeredEmployee.randomSalary()
