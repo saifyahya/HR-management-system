@@ -107,4 +107,25 @@ a:hover{
       font-size: 30px;
       font-weight: bold;
     }
+
+    #table{
+      border: black solid 2px;
+      padding: 10px;
+      text-align: center;
+    }
+    th{
+      font-weight: bold;
+      background-color: rgba(12, 136, 181, 0.645);
+      padding: 15px;
+      text-align: center;border: black solid 1px;
+      font-size: 25px;
+    }
+   td{
+      padding: 15px;
+      text-align: center;
+      border: black solid 1px;
+      background-color: aliceblue;
+      font-size: 25px;
+    }
+
   

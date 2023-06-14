@@ -12,7 +12,12 @@ function Employee(EmployeeID,FullName,Department,Level,ImageURL) {
     employeeArr.push(this);
     this.netSalary=function() {               
     this.Salary=this.Salary-this.Salary*0.075 }
-    }
+    this.ronudSalary = function () {
+      var factor = Math.pow(10, 3);
+      return Math.round(this.Salary * factor) / factor;
+  }
+  }
+    
 
 // prototype function to calculate random salary based on level
 Employee.prototype.randomSalary=function(){
@@ -74,9 +79,16 @@ num++;
 let registeredEmployee = new Employee(idGenerator(num),fullname,department,level,imageurl)
 registeredEmployee.randomSalary()
 registeredEmployee.netSalary()
+registeredEmployee.ronudSalary()
 registeredEmployee.renderEmoloyee()
+saveData()
 }
-  
+
+// save all employees to localstorage
+  function saveData() {
+    let stringArr = JSON.stringify(employeeArr); // array of strings 
+    localStorage.setItem("employees", stringArr);
+}
 
 
 
