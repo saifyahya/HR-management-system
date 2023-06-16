@@ -10,6 +10,7 @@ function getData( ) {     //get the data from localstorage into array
 
  let admEmployees=0, markEmployees=0,devEmployees=0,finEmployees =0;
   function numberOfEmployees(){   //function to calc number of employees in each department
+    if(objArr !=null)
   for(let i=0;i<objArr.length;i++){
   switch (objArr[i].Department){
   case "Administration":
@@ -30,6 +31,7 @@ numberOfEmployees()
 
 let admSalary=0, markSalary=0,devSalary=0,finSalary =0;
 function totalSalary(){  // function to calc total salary in each department
+  if(objArr !=null)
   for(let i=0;i<objArr.length;i++){
     switch (objArr[i].Department){
       case "Administration":
@@ -48,12 +50,6 @@ function totalSalary(){  // function to calc total salary in each department
 }}
 totalSalary()
 
-function precisionRound() { //function to round the total salary to 3 digits precision
- let factor = Math.pow(10, 3);
-  for(let i=0;i<objArr.length;i++)
-   Math.round(objArr[i].Salary * factor) / factor;
-}
-precisionRound() 
 
   function renderTable() {
     let tableEle=document.getElementById("table")
@@ -82,7 +78,7 @@ precisionRound()
     tr2El.appendChild(td1)
 
     let td2= document.createElement("td")       //total number of administration employees
-    td2.textContent=admEmployees
+    td2.textContent=Math.round(admEmployees)
     tr2El.appendChild(td2)
 
     let td3= document.createElement("td")      //total number of administration salaries
@@ -90,7 +86,7 @@ precisionRound()
     tr2El.appendChild(td3)
 
     let td4= document.createElement("td")     // administration avg salary
-    td4.textContent=Math.round(admSalary/admEmployees)
+    td4.textContent=admEmployees>0 ? Math.round(admSalary/admEmployees) : 0;
     tr2El.appendChild(td4)
 
     let tr3El = document.createElement("tr");  //3rd row
@@ -104,11 +100,11 @@ precisionRound()
     tr3El.appendChild(td6)
 
     let td7= document.createElement("td")       //total number of marketing salaries
-    td7.textContent=markSalary
+    td7.textContent=Math.round(markSalary)
     tr3El.appendChild(td7)
 
     let td8= document.createElement("td")       // avg salary of marketing
-    td8.textContent=Math.round(markSalary/markEmployees)
+    td8.textContent=markEmployees>0?Math.round(markSalary/markEmployees):0;
     tr3El.appendChild(td8)
 
     let tr4El = document.createElement("tr");  //4th row
@@ -126,7 +122,7 @@ precisionRound()
     tr4El.appendChild(td11)
 
     let td12= document.createElement("td")      //avg salary of development
-    td12.textContent=Math.round(devSalary/devEmployees)
+    td12.textContent=devEmployees>0?Math.round(devSalary/devEmployees):0;
     tr4El.appendChild(td12)
 
     let tr5El = document.createElement("tr");  //5th row
@@ -144,7 +140,7 @@ precisionRound()
     tr5El.appendChild(td15)
 
     let td16= document.createElement("td")
-    td16.textContent=Math.round(finSalary/finEmployees)  //avg salary for finance
+    td16.textContent=finEmployees>0?Math.round(finSalary/finEmployees):0; //avg salary for finance
     tr5El.appendChild(td16)
 
     let tablefoot = document.createElement("tfoot") //table footer
@@ -164,7 +160,7 @@ precisionRound()
     tr6El.appendChild(td19)
 
     let td20= document.createElement("td")
-    td20.textContent=Math.round(td19.textContent/4)  //average salary for all departments=total salary for all departments/4
+    td20.textContent=td18.textContent>0?Math.round(td19.textContent/td18.textContent):0;  //average salary for all departments=total salary for all departments/total employess
     tr6El.appendChild(td20)
 
     tableEle.appendChild(tr1El);
