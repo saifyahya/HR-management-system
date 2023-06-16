@@ -82,7 +82,7 @@ totalSalary()
     tr2El.appendChild(td2)
 
     let td3= document.createElement("td")      //total number of administration salaries
-    td3.textContent=admSalary
+    td3.textContent=Math.round(admSalary)
     tr2El.appendChild(td3)
 
     let td4= document.createElement("td")     // administration avg salary
@@ -118,7 +118,7 @@ totalSalary()
     tr4El.appendChild(td10)
 
     let td11= document.createElement("td")        //total number of develpoment salaries
-    td11.textContent=devSalary
+    td11.textContent=Math.round(devSalary)
     tr4El.appendChild(td11)
 
     let td12= document.createElement("td")      //avg salary of development
@@ -136,7 +136,7 @@ totalSalary()
     tr5El.appendChild(td14)
 
     let td15= document.createElement("td")    //total number of finance salaries
-    td15.textContent=finSalary
+    td15.textContent=Math.round(finSalary)
     tr5El.appendChild(td15)
 
     let td16= document.createElement("td")
