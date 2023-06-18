@@ -2,13 +2,13 @@
 
 let employeeArr=[] // creating array to push employee's instances
 
-function Employee(EmployeeID,FullName,Department,Level,ImageURL) {
+function Employee(EmployeeID,FullName,Department,Level,ImageURL,Salary) {
     this.EmployeeID=EmployeeID;
     this.FullName=FullName;
     this.Department=Department;
     this.Level=Level;
     this.ImageURL=ImageURL;
-    this.Salary=0;
+    this.Salary=Salary;
     employeeArr.push(this);
     this.netSalary=function() {               
     this.Salary=this.Salary-this.Salary*0.075 }
@@ -96,7 +96,7 @@ function gettoRender() {
   objArr=JSON.parse(RetrievedArr)
   if(objArr !=null)
  for(let i =0; i<objArr.length;i++){
-  new Employee(objArr[i].EmployeeID,objArr[i].FullName,objArr[i].Department,objArr[i].Level,objArr[i].ImageURL)
+  new Employee(objArr[i].EmployeeID,objArr[i].FullName,objArr[i].Department,objArr[i].Level,objArr[i].ImageURL,objArr[i].Salary)
   }
   renderAll()
 }
@@ -106,9 +106,6 @@ console.log(objArr)
 
 function renderAll(){
 for(let i = 0 ; i < employeeArr.length ; i++){
- employeeArr[i].randomSalary()
-  employeeArr[i].netSalary()
-  employeeArr[i].ronudSalary()
   employeeArr[i].renderEmoloyee()
 }}
 
